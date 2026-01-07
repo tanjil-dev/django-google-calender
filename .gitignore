@@ -1,0 +1,58 @@
+# Python
+.Python
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+*.egg
+*.egg-info/
+build/
+dist/
+develop-eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-log.txt
+pip-delete-this-directory.txt
+htmlcov/
+.tox/
+.coverage
+
+# Virtual Environment
+# It's best practice to ignore the virtual environment directory and keep a
+# requirements.txt file instead, generated via `pip freeze > requirements.txt`.
+venv/
+env/
+ENV/
+bin/
+include/
+# specific to Windows
+Scripts/
+# specific to macOS/Linux
+pip-selfcheck.json
+
+#credential g calender
+credentials/*.json
+
+# Django-specific
+*.log
+*.pot
+*.mo
+db.sqlite3
+local_settings.py
+.env # Contains environment variables and secrets.
+/static # Collected static files, can be generated at deployment.
+mediafiles/ # User-uploaded media files if not stored externally.
+
+# IDE-specific (VS Code, PyCharm, etc.)
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS-specific
+.DS_Store
+.Trash/
