@@ -290,3 +290,14 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 .ui-datepicker {
     z-index: 100 !important;
 }
+
+
+.booked {
+    background-color: #e0e0e0 !important;
+    color: #999 !important;
+    cursor: not-allowed;
+}
+.booked a {
+    background-color: #ffdddd !important;
+    color: #999 !important;
+}

@@ -56,18 +56,71 @@ if(contactForm){
 // });
 
 // Footer Year
-const yearEl = document.getElementById("year");
-if(yearEl) {
-    yearEl.textContent = new Date().getFullYear();
-}
-$(function () {
-  $("#datepicker-input").datepicker({
-    dateFormat: "yy-mm-dd",
-    minDate: 0,
-    beforeShowDay: function (date) {
-      const day = date.getDay();
-      // Allow only Saturday (6) and Sunday (0)
-      return [(day === 0 || day === 6)];
-    },
-  });
+// const yearEl = document.getElementById("year");
+// if(yearEl) {
+//     yearEl.textContent = new Date().getFullYear();
+// }
+// $(function () {
+//   $("#datepicker-input").datepicker({
+//     dateFormat: "yy-mm-dd",
+//     minDate: 0,
+//     beforeShowDay: function (date) {
+//       const day = date.getDay();
+//       // Allow only Saturday (6) and Sunday (0)
+//       return [(day === 0 || day === 6)];
+//     },
+//   });
+// });
+
+
+// $(document).ready(function () {
+//     $.getJSON("/api/unavailable-dates/", function (data) {
+//         const unavailable = data.unavailable;
+
+//         $("#datepicker-input").datepicker({
+//             dateFormat: "yy-mm-dd",
+//             minDate: 0,
+//             beforeShowDay: function (date) {
+//     const d = $.datepicker.formatDate("yy-mm-dd", date);
+//     const day = date.getDay(); // 0 = Sunday, 6 = Saturday
+
+//     // Block weekdays (Mon–Fri)
+//     if (day !== 0 && day !== 6) {
+//         return [false, "", "Weekdays not available"];
+//     }
+
+//     // Block unavailable dates from Google Calendar
+//     if (unavailable.includes(d)) {
+//         return [false, "booked", "Unavailable"];
+//     }
+
+//     // Allow only weekends
+//     return [true, "", "Available"];
+// }
+
+//         });
+//     });
+// });
+
+
+$(document).ready(function () {
+    $.getJSON("/api/unavailable-dates/", function (data) {
+        const unavailable = data.unavailable;
+
+        $("#datepicker-input").datepicker({
+            dateFormat: "yy-mm-dd",
+            minDate: 0,
+            beforeShowDay: function (date) {
+                const d = $.datepicker.formatDate("yy-mm-dd", date);
+
+                // Block unavailable dates from Google Calendar
+                if (unavailable.includes(d)) {
+                    return [false, "booked", "Unavailable"];
+                }
+
+                // Allow all days (Monday to Sunday)
+                return [true, "", "Available"];
+            }
+        });
+    });
 });

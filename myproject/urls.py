@@ -21,4 +21,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path("contact/", views.contact, name="contact"),
+
+    #API
+    path("api/unavailable-dates/", views.unavailable_dates, name="unavailable_dates"),
+
 ]

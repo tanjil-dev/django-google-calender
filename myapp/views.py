@@ -1,7 +1,12 @@
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.conf import settings
+from django.http import JsonResponse
+from services.google_calendar import get_unavailable_dates
 
+def unavailable_dates(request):
+    dates = get_unavailable_dates()
+    return JsonResponse({"unavailable": dates})
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
