@@ -46,9 +46,8 @@ def get_unavailable_dates(days=60):
 
         # Process each event to get the unavailable dates
         for event in events:
-            start = event["start"].get("dateTime", event["start"].get("date"))
-            if start:
-                booked_dates.add(start[:10])  # YYYY-MM-DD format
+            if "date" in event["start"]:  # All-day event
+                booked_dates.add(event["start"]["date"])
 
         # Return the list of unavailable dates
         return list(booked_dates)
@@ -59,6 +58,61 @@ def get_unavailable_dates(days=60):
         return []
 
 
-# Call the function and print the unavailable dates
-unavailable_dates = get_unavailable_dates()
-print("Unavailable dates:", unavailable_dates)
+def get_unavailable_times(date):
+    try:
+        # Authenticate using service account credentials
+        credentials = service_account.Credentials.from_service_account_file(
+            SERVICE_ACCOUNT_FILE, scopes=SCOPES
+        )
+
+        # Build the Google Calendar service
+        service = build("calendar", "v3", credentials=credentials)
+
+        # Set the time range for the selected date
+        time_min = datetime.strptime(date, "%Y-%m-%d").isoformat() + "Z"
+        time_max = (datetime.strptime(date, "%Y-%m-%d") + timedelta(days=1)).isoformat() + "Z"
+
+        # Log the time range to ensure it's correct
+        print(f"TimeMin: {time_min}, TimeMax: {time_max}")
+
+        # Fetch events from the Google Calendar
+        events_result = service.events().list(
+            calendarId=CALENDAR_ID,
+            timeMin=time_min,
+            timeMax=time_max,
+            singleEvents=True,
+            orderBy="startTime"
+        ).execute()
+
+        # Get the events
+        events = events_result.get("items", [])
+        print(f"Events: {events}")
+
+        # If no events are found, return an empty list
+        if not events:
+            print("No events found on the selected date.")
+            return []
+
+        booked_times = []
+
+        # Process each event to get the unavailable times
+        for event in events:
+            start = event["start"].get("dateTime", event["start"].get("date"))
+            if start:
+                booked_times.append(start[11:16])  # HH:MM format
+
+        # Return the list of unavailable times
+        return booked_times
+
+    except Exception as e:
+        # Catch any errors and print the error message
+        print(f"An error occurred: {e}")
+        return []
+
+
+# Example usage (for testing)
+if __name__ == "__main__":
+    unavailable_dates = get_unavailable_dates()
+    print("Unavailable dates:", unavailable_dates)
+    unavailable_times = get_unavailable_times("2024-08-01")
+    print("Unavailable times on 2024-08-01:", unavailable_times)

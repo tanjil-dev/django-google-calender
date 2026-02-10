@@ -2,11 +2,22 @@ from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.conf import settings
 from django.http import JsonResponse
-from services.google_calendar import get_unavailable_dates
+from services.google_calendar import get_unavailable_dates, get_unavailable_times
+
 
 def unavailable_dates(request):
     dates = get_unavailable_dates()
     return JsonResponse({"unavailable": dates})
+
+
+def unavailable_times(request):
+    date = request.GET.get("date")
+    if not date:
+        return JsonResponse({"error": "Date parameter is required"}, status=400)
+
+    times = get_unavailable_times(date)
+    return JsonResponse({"unavailable": times})
+
 # Create your views here.
 def index(request):
     return render(request, 'index.html')

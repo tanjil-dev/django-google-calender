@@ -104,8 +104,9 @@ if(contactForm){
 
 
 $(document).ready(function () {
+    // Fetch unavailable dates and initialize the datepicker
     $.getJSON("/api/unavailable-dates/", function (data) {
-        const unavailable = data.unavailable;
+        const unavailableDates = data.unavailable;
 
         $("#datepicker-input").datepicker({
             dateFormat: "yy-mm-dd",
@@ -113,13 +114,25 @@ $(document).ready(function () {
             beforeShowDay: function (date) {
                 const d = $.datepicker.formatDate("yy-mm-dd", date);
 
-                // Block unavailable dates from Google Calendar
-                if (unavailable.includes(d)) {
+                // Disable dates that are in the unavailableDates list
+                if (unavailableDates.includes(d)) {
                     return [false, "booked", "Unavailable"];
                 }
-
-                // Allow all days (Monday to Sunday)
                 return [true, "", "Available"];
+            },
+            onSelect: function (dateText) {
+                // Fetch unavailable times for the selected date
+                $.getJSON("/api/unavailable-times/", { date: dateText }, function (data) {
+                    const unavailableTimes = data.unavailable;
+
+                    // Reset all time options to be enabled
+                    $('select[name="preferred_time"] option').prop("disabled", false);
+
+                    // Disable the time options that are unavailable
+                    unavailableTimes.forEach(function (time) {
+                        $('select[name="preferred_time"] option[value="' + time + '"]').prop("disabled", true);
+                    });
+                });
             }
         });
     });

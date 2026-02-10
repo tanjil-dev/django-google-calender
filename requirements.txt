@@ -5,7 +5,7 @@ charset-normalizer==3.4.4
 Django==3.2.25
 google-api-core==2.29.0
 google-api-python-client==2.187.0
-google-auth==2.46.0
+google-auth==2.45.0
 google-auth-httplib2==0.3.0
 googleapis-common-protos==1.72.0
 httplib2==0.31.0

@@ -24,5 +24,6 @@ urlpatterns = [
 
     #API
     path("api/unavailable-dates/", views.unavailable_dates, name="unavailable_dates"),
+    path("api/unavailable-times/", views.unavailable_times, name="unavailable_times"),
 
 ]
