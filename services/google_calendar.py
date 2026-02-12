@@ -3,7 +3,7 @@ from googleapiclient.discovery import build
 from datetime import datetime, timedelta
 
 SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"]
-SERVICE_ACCOUNT_FILE = "credentials/test-project-2-432814-427b6b23f9f6.json"
+SERVICE_ACCOUNT_FILE = "/home/tanjilahmed/django-google-calender/credentials/test-project-2-432814-427b6b23f9f6.json"
 CALENDAR_ID = "tanzil.ovi578@gmail.com"
 
 
