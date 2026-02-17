@@ -32,14 +32,7 @@ if (portfolioModal) {
 }
 
 // Contact Form
-const contactForm = document.getElementById("contact-form");
-if(contactForm){
-    contactForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        alert("Thank you for your message. We'll be in touch within 24 hours.");
-        contactForm.reset();
-    });
-}
+
 
 // Initialize jQuery UI Datepicker
 // $(document).ready(function() {
