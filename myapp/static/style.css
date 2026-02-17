@@ -218,24 +218,80 @@ h1, h2, h3, h4, h5, h6, .font-heading {
     height: 1.5rem;
 }
 
-.flex {
-    display: flex;
+/* New Utility Classes for "Image/Visual Element" */
+.relative {
+    position: relative;
+}
+.absolute {
+    position: absolute;
+}
+.overflow-hidden {
+    overflow: hidden;
+}
+.w-full {
+    width: 100%;
+}
+.-bottom-4 {
+    bottom: -1rem; /* Assuming 1rem = 16px */
+}
+.-right-4 {
+    right: -1rem; /* Assuming 1rem = 16px */
+}
+.flex-col {
+    flex-direction: column;
+}
+.items-center {
+    align-items: center;
 }
 
-.justify-center {
-    justify-content: center;
+/* Sizing */
+.size-32 {
+    width: 8rem;
+    height: 8rem;
 }
 
-.rounded-full {
-    border-radius: 9999px;
+/* Appearance */
+.rounded-lg {
+    border-radius: 0.5rem;
+}
+.p-4 {
+    padding: 1rem;
+}
+.shadow-md {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
-.border-background\/50 {
-    border-color: hsla(var(--background), 0.5);
+/* Typography */
+.text-xs {
+    font-size: 0.75rem;
+}
+.text-4xl {
+    font-size: 2.25rem;
+}
+.font-medium {
+    font-weight: 500;
+}
+.uppercase {
+    text-transform: uppercase;
 }
 
-.bg-background\/50 {
-    background-color: hsla(var(--background), 0.5);
+/* Aspect Ratio */
+.aspect-\[4\/5\] { /* Escaping the / */
+    aspect-ratio: 4 / 5;
+}
+
+/* Responsive Classes (for 'lg:') */
+@media (min-width: 1024px) { /* Tailwind's 'lg' breakpoint */
+    .lg\:size-40 {
+        width: 10rem;
+        height: 10rem;
+    }
+    .lg\:text-5xl {
+        font-size: 3rem;
+    }
+    .lg\:text-sm {
+        font-size: 0.875rem;
+    }
 }
 
 @media (prefers-reduced-motion: no-preference) {

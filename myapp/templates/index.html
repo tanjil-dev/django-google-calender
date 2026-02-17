@@ -176,8 +176,8 @@
         </div>
     </section>
 </main>
-<br><br>
 <section id="portfolio" class="section-padding bg-light">
+    <br><br>
     <div class="container-xxl">
         <!-- Section Header -->
         <div class="text-center mb-5">
@@ -191,14 +191,11 @@
         <!-- Gallery Grid -->
         <div class="row g-4">
             <div class="col-md-6 col-lg-4">
-                <div
-                        class="position-relative overflow-hidden ratio ratio-4x3"
+                <div class="position-relative overflow-hidden ratio ratio-4x3"
                         data-bs-toggle="modal"
                         data-bs-target="#portfolio-modal"
-                        data-bs-slide-to="0"
-                >
-                    <img src="{% static 'assets/portfolio-living-room.jpg' %} "/>
-                    alt="Elegant country house living room with exposed beams and
+                        data-bs-slide-to="0">
+                    <img src="{% static 'assets/portfolio-living-room.jpg'  %}" alt="Elegant country house living room with exposed beams and
                     fireplace" class="w-100 h-100 object-fit-cover" />
                     <div
                             class="position-absolute top-0 bottom-0 start-0 end-0 bg-dark opacity-0 hover-opacity-25 transition-all"
@@ -215,11 +212,9 @@
                         class="position-relative overflow-hidden ratio ratio-4x3"
                         data-bs-toggle="modal"
                         data-bs-target="#portfolio-modal"
-                        data-bs-slide-to="1"
-                >
-                    <img src="{% static 'assets/portfolio-exterior.jpg' %} "/>
-                    alt="Georgian manor house with manicured lawn" class="w-100 h-100
-                    object-fit-cover" />
+                        data-bs-slide-to="1">
+                    <img src="{% static 'assets/portfolio-exterior.jpg' %} " alt="Georgian manor house with manicured lawn" class="w-100 h-100
+                    object-fit-cover"/>
                     <div
                             class="position-absolute top-0 bottom-0 start-0 end-0 bg-dark opacity-0 hover-opacity-25 transition-all"
                     ></div>
@@ -237,9 +232,8 @@
                         data-bs-target="#portfolio-modal"
                         data-bs-slide-to="2"
                 >
-                    <img src="{% static 'assets/portfolio-kitchen.jpg' %} "/>
-                    alt="Traditional country kitchen with Aga stove" class="w-100
-                    h-100 object-fit-cover" />
+                    <img src="{% static 'assets/portfolio-kitchen.jpg' %} " alt="Traditional country kitchen with Aga stove" class="w-100
+                    h-100 object-fit-cover"/>
                     <div
                             class="position-absolute top-0 bottom-0 start-0 end-0 bg-dark opacity-0 hover-opacity-25 transition-all"
                     ></div>
@@ -257,9 +251,8 @@
                         data-bs-target="#portfolio-modal"
                         data-bs-slide-to="3"
                 >
-                    <img src="{% static 'assets/portfolio-twilight.jpg' %} "/>
-                    alt="Stone cottage at twilight with glowing windows" class="w-100
-                    h-100 object-fit-cover" />
+                    <img src="{% static 'assets/portfolio-twilight.jpg' %} " alt="Stone cottage at twilight with glowing windows" class="w-100
+                    h-100 object-fit-cover"/>
                     <div
                             class="position-absolute top-0 bottom-0 start-0 end-0 bg-dark opacity-0 hover-opacity-25 transition-all"
                     ></div>
@@ -277,9 +270,8 @@
                         data-bs-target="#portfolio-modal"
                         data-bs-slide-to="4"
                 >
-                    <img src="{% static 'assets/portfolio-bedroom.jpg' %} "/>
-                    alt="Charming country bedroom with four-poster bed" class="w-100
-                    h-100 object-fit-cover" />
+                    <img src="{% static 'assets/portfolio-bedroom.jpg' %} " alt="Charming country bedroom with four-poster bed" class="w-100
+                    h-100 object-fit-cover"/>
                     <div
                             class="position-absolute top-0 bottom-0 start-0 end-0 bg-dark opacity-0 hover-opacity-25 transition-all"
                     ></div>
@@ -297,9 +289,8 @@
                         data-bs-target="#portfolio-modal"
                         data-bs-slide-to="5"
                 >
-                    <img src="{% static 'assets/portfolio-aerial.jpg' %} "/>
-                    alt="Aerial view of country estate with formal gardens"
-                    class="w-100 h-100 object-fit-cover" />
+                    <img src="{% static 'assets/portfolio-aerial.jpg' %} "alt="Aerial view of country estate with formal gardens"
+                    class="w-100 h-100 object-fit-cover"/>
                     <div
                             class="position-absolute top-0 bottom-0 start-0 end-0 bg-dark opacity-0 hover-opacity-25 transition-all"
                     ></div>
@@ -386,6 +377,7 @@
         </div>
     </div>
 </div>
+<br><br>
 <br><br>
 <section id="services" class="section-padding bg-secondary-subtle">
     <div class="container-xxl">
@@ -636,21 +628,16 @@
         <div class="row align-items-center g-5">
             <!-- Image/Visual Element -->
             <div class="col-md-6">
-                <div class="position-relative">
-                    <div class="ratio ratio-4x5">
-                        <img src="{% static 'assets/portfolio-exterior.jpg' %} "/>
-                        alt="About the photographer" class="w-100 h-100
-                        object-fit-cover">
-                    </div>
-                    <div
-                            class="position-absolute bottom-0 end-0 translate-middle bg-primary text-white p-3 text-center"
-                    >
-                        <span class="d-block font-heading fs-2">5+</span>
-                        <span class="small text-uppercase tracking-widest"
-                        >Years Experience</span
-                        >
+                <div class="relative overflow-hidden rounded-lg">
+                    <img src="{% static 'assets/portfolio-exterior.jpg' %}" alt="About the photographer" class="aspect-[4/5] w-full object-cover" />
+                    <div class="absolute -bottom-4 -right-4 flex size-32 items-center justify-center rounded-lg bg-primary p-4 text-center text-white shadow-md lg:size-40">
+                        <div class="flex flex-col">
+                            <span class="font-heading text-4xl font-medium lg:text-5xl">5+</span>
+                            <span class="text-xs uppercase tracking-widest lg:text-sm">Years Experience</span>
+                        </div>
                     </div>
                 </div>
+                <br><br>
             </div>
 
             <!-- Content -->
