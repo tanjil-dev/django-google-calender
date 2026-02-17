@@ -129,4 +129,21 @@ $(document).ready(function () {
             }
         });
     });
+
+    $('#contact-form').on('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        $.ajax({
+            url: $(this).attr('action'),
+            type: 'POST',
+            data: $(this).serialize(),
+            success: function(response) {
+                alert("Thank you for your message. We'll be in touch within 24 hours.");
+                $('#contact-form')[0].reset(); // Reset the form
+            },
+            error: function(xhr, errmsg, err) {
+                console.log(xhr.status + ": " + xhr.responseText); // Log any errors
+            }
+        });
+    });
 });

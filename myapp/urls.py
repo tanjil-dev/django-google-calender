@@ -3,7 +3,10 @@ from .views import *
 
 urlpatterns = [
     path('', index, name='index'),
-    path('contact/', contact_view, name='contact'),
+    path('contact/', index, name='contact'),
+
+    #API
+    path('api/contact/', contact_api, name='contact_api'),
 
     #API
     path("api/unavailable-dates/", unavailable_dates, name="unavailable_dates"),
