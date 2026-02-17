@@ -224,8 +224,10 @@ h1, h2, h3, h4, h5, h6, .font-heading {
     height: 0.75rem;
 }
 
-.animate-bounce {
-    animation: bounce 1s infinite;
+@media (prefers-reduced-motion: no-preference) {
+    .animate-bounce {
+        animation: bounce 1s infinite;
+    }
 }
 
 @keyframes bounce {
