@@ -186,12 +186,6 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 .text-white-90 {
     color: rgba(255, 255, 255, 0.9) !important;
 }
-.border-white-50 {
-    border-color: rgba(255, 255, 255, 0.5) !important;
-}
-.bg-white-50 {
-    background-color: rgba(255, 255, 255, 0.5) !important;
-}
 .text-background {
     color: hsl(var(--background));
 }
@@ -209,19 +203,39 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 }
 
 .w-6 {
-    width: 1.5rem;
+    width: 3rem;
 }
 
 .h-10 {
-    height: 2.5rem;
+    height: 5rem;
 }
 
 .w-1 {
-    width: 0.25rem;
+    width: 0.5rem;
 }
 
 .h-3 {
-    height: 0.75rem;
+    height: 1.5rem;
+}
+
+.flex {
+    display: flex;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.rounded-full {
+    border-radius: 9999px;
+}
+
+.border-background\/50 {
+    border-color: hsla(var(--background), 0.5);
+}
+
+.bg-background\/50 {
+    background-color: hsla(var(--background), 0.5);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -283,6 +297,19 @@ h1, h2, h3, h4, h5, h6, .font-heading {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes fade-in-out {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in-out {
+  animation: fade-in-out 2s infinite;
 }
 
 .form-select {
