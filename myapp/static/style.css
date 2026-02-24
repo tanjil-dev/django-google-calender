@@ -401,7 +401,10 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 }
 
 .hero-overlay {
-    background-image: linear-gradient(to bottom, hsla(var(--foreground), 0.2), hsla(var(--foreground), 0.1), hsla(var(--foreground), 0.4));
+    background-image: linear-gradient(
+        hsla(var(--foreground), 0.8),
+        hsla(var(--foreground), 0.8)
+    ) !important;
 }
 
 .btn-primary {
@@ -425,8 +428,9 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 }
 
 .btn-outline-light:hover {
-    background-color: hsla(var(--background), 0.1) !important;
+    background-color: hsla(var(--background), 0.6) !important;
     color: hsl(var(--background)) !important;
+    border-color: hsla(var(--background), 0.7) !important;
 }
 
 .animate-fade-up {
@@ -550,4 +554,66 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 .booked a {
     background-color: #ffdddd !important;
     color: #999 !important;
+}
+
+/* Custom font size for hero heading */
+.fs-extra-large {
+    font-size: 3.5rem !important; /* Base size for smaller screens */
+}
+
+@media (min-width: 768px) { /* Medium devices */
+    .fs-extra-large {
+        font-size: 3.5rem !important;
+    }
+}
+
+@media (min-width: 992px) { /* Large devices */
+    .fs-extra-large {
+        font-size: 3.5rem !important;
+    }
+}
+
+.scroll-indicator-border {
+    border-color: #fff !important; /* White border */
+}
+
+.scroll-indicator-bg {
+    background-color: #fff !important; /* White background */
+}
+
+.icon-scroll,
+.icon-scroll:before {
+  position: absolute;
+  left: 50%;
+}
+
+.icon-scroll {
+  width: 40px;
+  height: 70px;
+  margin-left: -20px;
+  top: 90%;
+  margin-top: -35px;
+  box-shadow: inset 0 0 0 1px #fff;
+  border-radius: 25px;
+}
+
+.icon-scroll:before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  margin-left: -4px;
+  top: 8px;
+  border-radius: 4px;
+  animation: scroll 1.5s infinite;
+}
+
+@keyframes scroll {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(46px);
+  }
 }
