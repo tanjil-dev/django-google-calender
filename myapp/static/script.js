@@ -97,37 +97,52 @@ if (portfolioModal) {
 
 
 $(document).ready(function () {
-    // Fetch unavailable dates and initialize the datepicker
+    const $dateInput = $("#datepicker-input");
+
+    // Initialize datepicker immediately so it responds to the first click
+    $dateInput.datepicker({
+        dateFormat: "yy-mm-dd",
+        minDate: 0
+    });
+
+    // Ensure it shows when clicked or focused, even if options are being updated
+    $dateInput.on('click focus', function() {
+        $(this).datepicker('show');
+    });
+
+    // Fetch unavailable dates and update the datepicker options
     $.getJSON("/api/unavailable-dates/", function (data) {
         const unavailableDates = data.unavailable;
 
-        $("#datepicker-input").datepicker({
-            dateFormat: "yy-mm-dd",
-            minDate: 0,
-            beforeShowDay: function (date) {
-                const d = $.datepicker.formatDate("yy-mm-dd", date);
+        $dateInput.datepicker("option", "beforeShowDay", function (date) {
+            const d = $.datepicker.formatDate("yy-mm-dd", date);
 
-                // Disable dates that are in the unavailableDates list
-                if (unavailableDates.includes(d)) {
-                    return [false, "booked", "Unavailable"];
-                }
-                return [true, "", "Available"];
-            },
-            onSelect: function (dateText) {
-                // Fetch unavailable times for the selected date
-                $.getJSON("/api/unavailable-times/", { date: dateText }, function (data) {
-                    const unavailableTimes = data.unavailable;
-
-                    // Reset all time options to be enabled
-                    $('select[name="preferred_time"] option').prop("disabled", false);
-
-                    // Disable the time options that are unavailable
-                    unavailableTimes.forEach(function (time) {
-                        $('select[name="preferred_time"] option[value="' + time + '"]').prop("disabled", true);
-                    });
-                });
+            // Disable dates that are in the unavailableDates list
+            if (unavailableDates.includes(d)) {
+                return [false, "booked", "Unavailable"];
             }
+            return [true, "", "Available"];
         });
+
+        $dateInput.datepicker("option", "onSelect", function (dateText) {
+            // Fetch unavailable times for the selected date
+            $.getJSON("/api/unavailable-times/", { date: dateText }, function (data) {
+                const unavailableTimes = data.unavailable;
+
+                // Reset all time options to be enabled
+                $('select[name="preferred_time"] option').prop("disabled", false);
+
+                // Disable the time options that are unavailable
+                unavailableTimes.forEach(function (time) {
+                    $('select[name="preferred_time"] option[value="' + time + '"]').prop("disabled", true);
+                });
+            });
+        });
+
+        // Re-trigger if already focused
+        if ($dateInput.is(":focus")) {
+            $dateInput.datepicker("show");
+        }
     });
 
     $('#contact-form').on('submit', function(event) {
